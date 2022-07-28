@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const axiosInstance = axios.create({
-   baseURL: ' http://localhost:3000/ingredientes'
+   baseURL: ' http://localhost:3000/'
 })
 
 export default {

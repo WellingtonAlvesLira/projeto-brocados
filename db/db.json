@@ -1,75 +1,106 @@
 {
-    "ingredientes": {
-        "paes": [
-            {
-                "id": 1,
-                "tipo": "Italiano Branco"
-            },
-            {
-                "id": 2,
-                "tipo": "3 Queijos"
-            },
-            {
-                "id": 3,
-                "tipo": "Permesão e Orégano"
-            },
-            {
-                "id": 4,
-                "tipo": "Integral"
-            }
-        ],
-        "carnes": [
-            {
-                "id": 1,
-                "tipo": "Maminha"
-            },
-            {
-                "id": 2,
-                "tipo": "Alcatara"
-            },
-            {
-                "id": 3,
-                "tipo": "Picanha"
-            },
-            {
-                "id": 4,
-                "tipo": "Veggie Burger"
-            }
-        ],
-        "opcionais": [
-            {
-                "id": 1,
-                "tipo": "Bacon"
-            },
-            {
-                "id": 2,
-                "tipo": "Chelddar"
-            },
-            {
-                "id": 3,
-                "tipo": "Salame"
-            },
-            {
-                "id": 4,
-                "tipo": "Tomate"
-            }
-        ]
+  "ingredientes": {
+    "paes": [
+      {
+        "id": 1,
+        "tipo": "Italiano Branco"
+      },
+      {
+        "id": 2,
+        "tipo": "3 Queijos"
+      },
+      {
+        "id": 3,
+        "tipo": "Permesão e Orégano"
+      },
+      {
+        "id": 4,
+        "tipo": "Integral"
+      }
+    ],
+    "carnes": [
+      {
+        "id": 1,
+        "tipo": "Maminha"
+      },
+      {
+        "id": 2,
+        "tipo": "Alcatara"
+      },
+      {
+        "id": 3,
+        "tipo": "Picanha"
+      },
+      {
+        "id": 4,
+        "tipo": "Veggie Burger"
+      }
+    ],
+    "opcionais": [
+      {
+        "id": 1,
+        "tipo": "Bacon"
+      },
+      {
+        "id": 2,
+        "tipo": "Chelddar"
+      },
+      {
+        "id": 3,
+        "tipo": "Salame"
+      },
+      {
+        "id": 4,
+        "tipo": "Tomate"
+      }
+    ]
+  },
+  "status": [
+    {
+      "id": 1,
+      "tipo": "Solicitado"
     },
-        "status": [
-            {
-                "id":1,
-                "tipo": "Solicitado"
-            },
-            {
-                "id":2,
-                "tipo": "Em produção"
-            },
-            {
-                "id":3,
-                "tipo": "Finalizado"
-            }
-        ],
-        "burgers":[]
-       
-
+    {
+      "id": 2,
+      "tipo": "Em produção"
+    },
+    {
+      "id": 3,
+      "tipo": "Finalizado"
+    }
+  ],
+  "burgers": [
+    {
+      "nome": "Wellington",
+      "pao": "Italiano Branco",
+      "carne": "Maminha",
+      "opcionais": null,
+      "status": "Solicitado",
+      "id": 1
+    },
+    {
+      "nome": "w",
+      "pao": "Italiano Branco",
+      "carne": "Maminha",
+      "opcionais": null,
+      "status": "Solicitado",
+      "id": 2
+    },
+    {
+      "nome": "t",
+      "pao": "Italiano Branco",
+      "carne": "Alcatara",
+      "opcionais": null,
+      "status": "Solicitado",
+      "id": 3
+    },
+    {
+      "nome": "e",
+      "pao": "Italiano Branco",
+      "carne": "Maminha",
+      "opcionais": null,
+      "status": "Solicitado",
+      "id": 4
+    }
+  ]
 }
