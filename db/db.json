@@ -69,38 +69,7 @@
       "tipo": "Finalizado"
     }
   ],
-  "burgers": [
-    {
-      "nome": "Wellington",
-      "pao": "Italiano Branco",
-      "carne": "Maminha",
-      "opcionais": null,
-      "status": "Solicitado",
-      "id": 1
-    },
-    {
-      "nome": "w",
-      "pao": "Italiano Branco",
-      "carne": "Maminha",
-      "opcionais": null,
-      "status": "Solicitado",
-      "id": 2
-    },
-    {
-      "nome": "t",
-      "pao": "Italiano Branco",
-      "carne": "Alcatara",
-      "opcionais": null,
-      "status": "Solicitado",
-      "id": 3
-    },
-    {
-      "nome": "e",
-      "pao": "Italiano Branco",
-      "carne": "Maminha",
-      "opcionais": null,
-      "status": "Solicitado",
-      "id": 4
-    }
+  "burgers": [   
+ 
   ]
 }

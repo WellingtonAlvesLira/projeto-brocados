@@ -2,19 +2,21 @@
 <template>
   <v-container class="fluid mt-5">
     <v-row class="justify-center">
+
+      <v-alert dense text type="success" v-model="ShowMenssagem">
+        {{ msg }}
+        <v-btn text @click="ShowMenssagem = false" color="red"> Fechar </v-btn>
+      </v-alert>
+
       <v-col col="12" md="4" lg="8" class="text-center">
+
         <template>
-          <v-form
-            ref="formV"
-            v-model="valid"
-            lazy-validation
-          >
+          
+          <v-form>
+
             <v-text-field
               v-model="Burger.nome"
-              :counter="10"
-              :rules="regraNome"
               label="Digite o seu nome"
-              required
             ></v-text-field>
 
             <label for="pao" id="text-opc">Escolha o pão</label>
@@ -39,30 +41,25 @@
               </option>
             </select>
 
-            <p id="text-opc" class="mt-2">Selecione os opcionais:</p>
-            <div
-              class="p3 ml-2 d-inline"
-              v-for="(opc, i) in opcionaisdata"
-              :key="i"
+            <label for="pao" id="text-opc">Selecione os opcionais:</label>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              v-model="Burger.opcionais"
             >
-              <input type="checkbox" v-model="Burger.opcionais"/>
-              <span>{{ opc.tipo }}</span>
-            </div>
+              <option v-for="(opc, i) in opcionaisdata" :key="i">
+                {{ opc.tipo }}
+              </option>
+            </select>
 
-            <v-btn
-              :disabled="!valid"
-              color="success"
-              class="mr-4 mt-3"
-              @click="validate"
-            >
+            <v-btn color="success" class="mr-4 mt-3" @click="fazer_pedido">
               Enviar Pedido
             </v-btn>
 
-            <v-btn color="error" class="mr-4 mt-3" @click="reset">
-              Limpar
-            </v-btn>
           </v-form>
-        </template></v-col
+
+        </template>
+        </v-col
       ></v-row
     ></v-container
   >
@@ -75,46 +72,41 @@ export default {
   name: "FormBrocados",
   mixins: [api],
   data: () => ({
-    Burger:{
-      
-    nome: null,
-    pao: null,
-    carne: null,
-    opcionais: null,
-    status: "Solicitado",
-
+    Burger: {
+      nome: "",
+      pao: "",
+      carne: "",
+      opcionais: "",
     },
 
     paes: [],
     carnes: [],
-    opcionaisdata: null,
-    msg: null,
-    valid: true,
+    opcionaisdata: [],
+    msg: "",
 
-    regraNome: [
-      (v) => !!v || "A sua identificação é obrigatória.",
-      (v) => (v && v.length <= 10) || "Nome com apenas 10 caracter",
-    ],
-
+    ShowMenssagem: false,
   }),
 
   methods: {
-    validate() {
-      this.$refs.formV.validate();
-      this.post("http://localhost:3000/burgers", this.Burger).then((resposta) => {
-        if(resposta.data){
-          alert('salvo com sucesso');
-        }
-      });
-    },
-    reset() {
-      this.$refs.formV.reset();
+    fazer_pedido() {
+      if (this.Burger.nome == "") {
+        alert("O seu nome é obrigatório. Preencha!");
+        this.ShowMenssagem = false;
+      } else if (this.Burger) {
+        this.post("/burgers", this.Burger).then((resposta) => {
+          if (resposta.data) {
+            this.msg = "Pedido salvo com sucesso";
+            this.ShowMenssagem = true;
+            this.Burger = "";
+          }
+        });
+      }
     },
   },
 
   created() {
     //Listando dados do backend para a aplicação
-    this.get("http://localhost:3000/ingredientes").then((resposta) => {
+    this.get("/ingredientes").then((resposta) => {
       this.paes = resposta.data.paes;
       this.carnes = resposta.data.carnes;
       this.opcionaisdata = resposta.data.opcionais;
