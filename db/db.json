@@ -69,7 +69,30 @@
       "tipo": "Finalizado"
     }
   ],
-  "burgers": [   
- 
+  "burgers": [
+    {
+      "nome": "Wellington ",
+      "pao": "Permesão e Orégano",
+      "carne": "Alcatara",
+      "opcionais": "Salame",
+      "status": "Solicitado",
+      "id": 1
+    },
+    {
+      "nome": "Sidvaldo",
+      "pao": "3 Queijos",
+      "carne": "Maminha",
+      "opcionais": "Bacon",
+      "status": "Solicitado",
+      "id": 10
+    },
+    {
+      "nome": "Fabiula",
+      "pao": "Italiano Branco",
+      "carne": "Alcatara",
+      "opcionais": "Bacon",
+      "status": "Solicitado",
+      "id": 11
+    }
   ]
 }

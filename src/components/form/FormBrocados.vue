@@ -4,14 +4,14 @@
     <v-row class="justify-center">
 
       <v-alert dense text type="success" v-model="ShowMenssagem">
-        {{ msg }}
+        {{ msg }} / <span>Cód: {{numberPedido}}</span>
         <v-btn text @click="ShowMenssagem = false" color="red"> Fechar </v-btn>
       </v-alert>
-
+      
       <v-col col="12" md="4" lg="8" class="text-center">
 
         <template>
-          
+
           <v-form>
 
             <v-text-field
@@ -72,29 +72,35 @@ export default {
   name: "FormBrocados",
   mixins: [api],
   data: () => ({
+    //Dados a serem enviados de uma vez só para o back
     Burger: {
       nome: "",
       pao: "",
       carne: "",
       opcionais: "",
+      status: "Solicitado",
     },
 
     paes: [],
     carnes: [],
     opcionaisdata: [],
     msg: "",
+    numberPedido: "",
 
     ShowMenssagem: false,
   }),
 
   methods: {
     fazer_pedido() {
+      //Validação de dados
       if (this.Burger.nome == "") {
         alert("O seu nome é obrigatório. Preencha!");
         this.ShowMenssagem = false;
       } else if (this.Burger) {
+        //enviando dados para o back.
         this.post("/burgers", this.Burger).then((resposta) => {
           if (resposta.data) {
+            this.numberPedido = Math.floor((Math.random() *9000) + 1)
             this.msg = "Pedido salvo com sucesso";
             this.ShowMenssagem = true;
             this.Burger = "";

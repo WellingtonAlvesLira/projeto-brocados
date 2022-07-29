@@ -3,7 +3,8 @@
     <v-container fluid>
       <v-row class="justify-center">
         <v-col cols="12" md="4" lg="6" class="text-center">
-          <h1>PEDIDOS</h1>
+          <h1>Gerenciar Pedidos</h1>
+          <dashaboardBrocados/>
         </v-col>
       </v-row>
     </v-container>
@@ -11,18 +12,14 @@
 </template>
 
 <script>
-export default {};
-</script>
-
-<style>
-</style>
-
-
-<script>
+import dashaboardBrocados from '../dashboard/dashaboardBrocados.vue';
 export default {
-  name: "PedidosBrocados",
+  name:'dashaboarBrocados',
+  components:{
+    dashaboardBrocados
+  }
 };
 </script>
 
-<style>
+<style scoped>
 </style>
