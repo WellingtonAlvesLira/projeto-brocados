@@ -2,7 +2,7 @@
   <v-app>
     <v-container fluid>
       <v-row class="justify-center">
-        <v-col cols="12" md="4" lg="6" class="text-center">
+        <v-col cols="12" md="4" lg="12">
           <h1>Gerenciar Pedidos</h1>
           <dashaboardBrocados/>
         </v-col>
