@@ -3,7 +3,7 @@
   <v-container class="fluid mt-5">
     <v-row class="justify-center">
 
-      <v-alert dense text type="success" v-model="ShowMenssagem">
+      <v-alert dense text type="success" v-model="ShowMenssagem" v-if="this.ShowMenssagem == true || this.burger_pedido == ''">
         {{ msg }} / <span>Cód: {{numberPedido}}</span>
         <v-btn text @click="ShowMenssagem = false" color="red"> Fechar </v-btn>
       </v-alert>
@@ -12,17 +12,17 @@
 
         <template>
 
-          <v-form>
+          <v-form @submit="fazer_pedido">
 
             <v-text-field
-              v-model="Burger.nome"
+              v-model="burger_pedido.nome"
               label="Digite o seu nome"
             ></v-text-field>
 
             <label for="pao" id="text-opc">Escolha o pão</label>
             <select
               id="pao"
-              v-model="Burger.pao"
+              v-model="burger_pedido.pao"
               class="form-select"
               aria-label="Default select example"
               placeholder="Escolha o pão"
@@ -34,7 +34,7 @@
             <select
               class="form-select"
               aria-label="Default select example"
-              v-model="Burger.carne"
+              v-model="burger_pedido.carne"
             >
               <option v-for="(carne, i) in carnes" :key="i">
                 {{ carne.tipo }}
@@ -45,7 +45,7 @@
             <select
               class="form-select"
               aria-label="Default select example"
-              v-model="Burger.opcionais"
+              v-model="burger_pedido.opcionais"
             >
               <option v-for="(opc, i) in opcionaisdata" :key="i">
                 {{ opc.tipo }}
@@ -68,12 +68,13 @@
 <script>
 import api from "@/api/api.js";
 
+
 export default {
   name: "FormBrocados",
   mixins: [api],
   data: () => ({
     //Dados a serem enviados de uma vez só para o back
-    Burger: {
+    burger_pedido: {
       nome: "",
       pao: "",
       carne: "",
@@ -93,17 +94,17 @@ export default {
   methods: {
     fazer_pedido() {
       //Validação de dados
-      if (this.Burger.nome == "") {
+      if (this.burger_pedido.nome == "") {
         alert("O seu nome é obrigatório. Preencha!");
         this.ShowMenssagem = false;
-      } else if (this.Burger) {
+      } else if (this.burger_pedido) {
         //enviando dados para o back.
-        this.post("/burgers", this.Burger).then((resposta) => {
+        this.post("/burgers/", this.burger_pedido).then((resposta) => {
           if (resposta.data) {
             this.numberPedido = Math.floor((Math.random() *9000) + 1)
             this.msg = "Pedido salvo com sucesso";
             this.ShowMenssagem = true;
-            this.Burger = "";
+
           }
         });
       }

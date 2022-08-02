@@ -62,7 +62,7 @@
     },
     {
       "id": 2,
-      "tipo": "Em produção"
+      "tipo": "Em Produção"
     },
     {
       "id": 3,
@@ -71,36 +71,12 @@
   ],
   "burgers": [
     {
-      "nome": "Wellington",
-      "pao": "Italiano Branco",
-      "carne": "Picanha",
-      "opcionais": "Bacon",
-      "status": "Solicitado",
-      "id": 1
-    },
-    {
-      "nome": "Bruno ",
-      "pao": "Italiano Branco",
-      "carne": "Alcatara",
-      "opcionais": "Salame",
-      "status": "Solicitado",
-      "id": 2
-    },
-    {
-      "nome": "Nicolas",
+      "nome": "Marlon",
       "pao": "Italiano Branco",
       "carne": "Maminha",
-      "opcionais": "Salame",
+      "opcionais": "Chelddar",
       "status": "Solicitado",
-      "id": 3
-    },
-    {
-      "nome": "Carol",
-      "pao": "Integral",
-      "carne": "Alcatara",
-      "opcionais": "Tomate",
-      "status": "Solicitado",
-      "id": 4
+      "id": 5
     }
   ]
 }

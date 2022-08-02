@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const axiosInstance = axios.create({
-   baseURL: ' http://localhost:3000/'
+   baseURL: 'http://localhost:3000/'
 })
 
 export default {
@@ -18,7 +18,10 @@ export default {
             return axiosInstance.put(url, data);
         },
         delete(url, data){
-            return axiosInstance.put(url, data);
+            return axiosInstance.delete(url, data);
+        },
+        patch(url, data){
+            return axiosInstance.patch(url, data);
         }
         
     }

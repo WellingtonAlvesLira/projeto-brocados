@@ -22,7 +22,7 @@ import CarrouselsPedidosBrocados from '../carrousels/CarrouselsPedidosBrocados.v
 import FormBrocados from '../form/FormBrocados.vue'
 
 export default {
-  name: "HomeBrocados",
+  name: "HomeBrocadosPage",
   components:{
     CarrouselsPedidosBrocados,
     FormBrocados

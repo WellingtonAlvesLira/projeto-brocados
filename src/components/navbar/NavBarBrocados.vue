@@ -29,7 +29,7 @@ export default {
       this.$router.push("/");
     },
     page_pedido() {
-      this.$router.push("/pedidos");
+      this.$router.push("/pedidos-brocados");
     },
   },
 };

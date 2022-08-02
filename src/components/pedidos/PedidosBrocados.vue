@@ -14,7 +14,7 @@
 <script>
 import dashaboardBrocados from '../dashboard/dashaboardBrocados.vue';
 export default {
-  name:'dashaboarBrocados',
+  name:'PedidosBrocados',
   components:{
     dashaboardBrocados
   }
