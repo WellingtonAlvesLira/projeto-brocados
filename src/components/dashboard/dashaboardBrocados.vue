@@ -34,8 +34,8 @@
           </v-btn>
         </template>
         <v-list>
-          <v-list-item v-for="(s, i) in status" :key="i" :selected="item.tipo == s.tipo" @click="atualizarStatus(s.tipo)">
-            <v-list-item-title v-model="statusPedido">{{ s.tipo }}</v-list-item-title>
+          <v-list-item v-for="(s, i) in status" :key="i" @click="atualizarStatus(item.id, s.tipo)">
+            <v-list-item-title>{{ s.tipo }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
@@ -53,9 +53,6 @@ export default {
   name: "dashboardBrocados",
   mixins: [api],
   data: () => ({
-    data:{
-       statusPedido: "",
-    },
     dialog: false,
     headers: [
       {
@@ -68,7 +65,7 @@ export default {
       { text: "Pão", value: "pao" },
       { text: "Carne", value: "carne" },
       { text: "Opcionais", value: "opcionais" },
-      { text: "Status", value: "status" },
+      { text: "Status", value: "statusTipo" },
       { text: "AÇÕES", value: "actions", sortable: false },
     ],
     desserts: [],
@@ -106,8 +103,16 @@ export default {
 
     },
 
-    atualizarStatus(stipo){
-      alert(stipo)
+    atualizarStatus(itemId,statusTipo){
+       this.patch(`/burgers/${itemId}`, {statusTipo})
+      .then(() => {
+        this.listarPedidos()
+          console.log('Usuário atualizado com sucesso')
+      })
+      .catch((error) => {
+          console.log(error);
+      });
+  
     }
 
   },

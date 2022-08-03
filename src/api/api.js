@@ -19,7 +19,7 @@ export default {
         },
         delete(url, data){
             return axiosInstance.delete(url, data);
-        },
+        },  
         patch(url, data){
             return axiosInstance.patch(url, data);
         }

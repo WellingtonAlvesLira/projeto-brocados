@@ -79,7 +79,6 @@ export default {
       pao: "",
       carne: "",
       opcionais: "",
-      status: "Solicitado",
     },
 
     paes: [],
