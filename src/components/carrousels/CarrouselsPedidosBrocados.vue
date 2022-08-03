@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="justify-center">
   <v-app id="inspire">
     <v-carousel
       cycle

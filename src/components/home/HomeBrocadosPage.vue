@@ -6,9 +6,9 @@
          <CarrouselsPedidosBrocados/>
         </v-col>
 
-        <v-col cols="12" lg="6" class="text-center">
-         <h1>Monte o seu Burger:</h1>
-         <FormBrocados/>
+        <v-col cols="12" lg="5" class="text-center ml-4">
+         <h1>Login</h1>
+         <LoginBrocadosPage/>
         </v-col>
          
       </v-row>
@@ -19,13 +19,13 @@
 <script>
 
 import CarrouselsPedidosBrocados from '../carrousels/CarrouselsPedidosBrocados.vue';
-import FormBrocados from '../form/FormBrocados.vue'
+import LoginBrocadosPage from '../login/LoginBrocadosPage.vue'
 
 export default {
   name: "HomeBrocadosPage",
   components:{
     CarrouselsPedidosBrocados,
-    FormBrocados
+    LoginBrocadosPage,
 
   },
 }
