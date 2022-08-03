@@ -1,13 +1,23 @@
 <template>
-  <v-carousel>
-    <v-carousel-item
-      v-for="(item, i) in items"
+  <div id="app">
+  <v-app id="inspire">
+    <v-carousel
+      cycle
+      height="500"
+      hide-delimiter-background
+      show-arrows-on-hover
+      class="p-6"
+    >
+      <v-carousel-item
+         v-for="(item, i) in items"
       :key="i"
       :src="item.src"
-      reverse-transition="fade-transition"
-      transition="fade-transition"
-    ></v-carousel-item>
-  </v-carousel>
+      >
+      </v-carousel-item>
+    </v-carousel>
+  </v-app>
+</div>
+
 </template>
 
 
@@ -18,16 +28,16 @@ export default {
     return {
       items: [
         {
-          src: "https://fastly.4sqi.net/img/general/600x600/24959745_K0VEj7rIuY-C4IVKFToNxfJJabJfoDtPhSY_9t7RdiQ.jpg",
+         src: "https://i.pinimg.com/originals/ed/4d/23/ed4d23b609435e647c15cfe0dcf4c5d6.png", 
         },
         {
-          src: "https://s2.glbimg.com/tMSGmpZFixrP_56ywnwTqxj1yBw=/620x455/e.glbimg.com/og/ed/f/original/2021/07/21/receita-hamburguer-frango-cebola-roxa-maionese-verde.jpg",
+          src: "https://media.istockphoto.com/photos/burger-on-black-background-picture-id1240080013?k=20&m=1240080013&s=170667a&w=0&h=czGhWrlr7iCQ-N9MnuRTWxtZPhMpYDP1f6wzEpD3Jb0=",
         },
         {
           src: "https://media-cdn.tripadvisor.com/media/photo-s/1a/dd/ac/e1/container-burger-3-hamburguer.jpg",
         },
         {
-          src: "https://gkpb.com.br/wp-content/uploads/2016/08/novos-sanduiches-picanha-fanaticos-bacon-queijo-desaque-blog-gkpb.jpg",
+          src: "https://files.menudino.com/cardapios/7774/logo.png",
         },
       ],
     };

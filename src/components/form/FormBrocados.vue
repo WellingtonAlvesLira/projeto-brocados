@@ -3,17 +3,11 @@
   <v-container class="fluid mt-5">
     <v-row class="justify-center">
 
-      <v-alert dense text type="success" v-model="ShowMenssagem" v-if="this.ShowMenssagem == true || this.burger_pedido == ''">
-        {{ msg }} / <span>Cód: {{numberPedido}}</span>
-        <v-btn text @click="ShowMenssagem = false" color="red"> Fechar </v-btn>
-      </v-alert>
-      
+      <msgBrocados :msg="msg" :numberPedido="numberPedido" v-show="msg"/>
+   
       <v-col col="12" md="4" lg="8" class="text-center">
-
         <template>
-
           <v-form @submit="fazer_pedido">
-
             <v-text-field
               v-model="burger_pedido.nome"
               label="Digite o seu nome"
@@ -55,12 +49,9 @@
             <v-btn color="success" class="mr-4 mt-3" @click="fazer_pedido">
               Enviar Pedido
             </v-btn>
-
           </v-form>
-
         </template>
-        </v-col
-      ></v-row
+      </v-col></v-row
     ></v-container
   >
 </template>
@@ -68,9 +59,13 @@
 <script>
 import api from "@/api/api.js";
 
+import msgBrocados from '@/components/feedback/msgBrocados.vue'
 
 export default {
   name: "FormBrocados",
+  components:{
+    msgBrocados,
+  },
   mixins: [api],
   data: () => ({
     //Dados a serem enviados de uma vez só para o back
@@ -78,16 +73,17 @@ export default {
       nome: "",
       pao: "",
       carne: "",
+      status: "Solicitado",
       opcionais: "",
     },
 
     paes: [],
     carnes: [],
     opcionaisdata: [],
+
     msg: "",
     numberPedido: "",
 
-    ShowMenssagem: false,
   }),
 
   methods: {
@@ -100,9 +96,9 @@ export default {
         //enviando dados para o back.
         this.post("/burgers/", this.burger_pedido).then((resposta) => {
           if (resposta.data) {
-            this.numberPedido = Math.floor((Math.random() *9000) + 1)
-            this.msg = "Pedido salvo com sucesso";
-            this.ShowMenssagem = true;
+            this.numberPedido = Math.floor(Math.random() * 9000 + 1);
+            this.msg = `Pedido realizado com sucesso/ CÓD: ${this.numberPedido}`;
+            setTimeout(() => this.msg = "", 4000);
 
           }
         });

@@ -71,12 +71,21 @@
   ],
   "burgers": [
     {
-      "nome": "Sthefanny",
+      "nome": "Wellington",
+      "pao": "Italiano Branco",
+      "carne": "Maminha",
+      "status": "Solicitado",
+      "opcionais": "Chelddar",
+      "id": 1,
+      "statusTipo": "Em Produção"
+    },
+    {
+      "nome": "Marlon",
       "pao": "3 Queijos",
       "carne": "Maminha",
-      "opcionais": "Salame",
       "status": "Solicitado",
-      "id": 5,
+      "opcionais": "Salame",
+      "id": 2,
       "statusTipo": "Em Produção"
     }
   ]

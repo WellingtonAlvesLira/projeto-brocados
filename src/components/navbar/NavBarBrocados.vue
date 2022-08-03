@@ -1,22 +1,34 @@
 <template>
-  <v-card class="overflow-hidden">
+  <v-card>
     <v-app-bar
-      absolute
-      color="#6A76AB"
+      fixed
+      color="black"
       dark
-      src="https://thumbs.dreamstime.com/b/burger-e-cerveja-panorama-hamb%C3%BArguer-com-carne-de-bovino-queijo-cebola-tomate-salada-verde-uma-vista-lateral-sobre-fundo-escuro-200271972.jpg"
+
+      prominent
+
     >
+
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+       <img id="img_nav" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaKGDeCo-Pm8cjvePh02Ghzcb0Vl8TIgesT4yw7fbiMM9w2ggadjtKbqw8VTvQ07591mk&usqp=CAU" alt="">
+      <v-toolbar-title>APP BROCADOS</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
       <template v-slot:extension>
-        <v-tabs align-with-title class="mr-6 mb-4">
-          <v-spacer></v-spacer>
-          <v-toolbar-title class="title-app">APP BROCADOS</v-toolbar-title>
-          <v-tab @click="page_home">HOME</v-tab>
-          <v-tab @click="page_pedido">PEDIDOS</v-tab>
+        <v-tabs align-with-title>
+          <v-tab @click="page_home()">HOME</v-tab>
+
+          <v-tab @click="page_pedido()">PEDIDOS</v-tab>
+
         </v-tabs>
       </template>
     </v-app-bar>
-    <v-sheet max-height="150">
-      <v-container style="height: 800px"></v-container>
+    <v-sheet
+      id="scrolling-techniques-4"
+      max-height="300"
+    >
+      <v-container style="height: 800px;"></v-container>
     </v-sheet>
   </v-card>
 </template>
@@ -36,10 +48,9 @@ export default {
 </script>
 
 <style scoped>
-.title-app {
-  color: rgb(243, 239, 14);
-  margin-right: 25px;
-  font-family: fantasy;
+
+#img_nav{
+  width: 100px;
 }
 
 .v-tab {

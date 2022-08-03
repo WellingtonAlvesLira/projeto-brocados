@@ -7,39 +7,28 @@
   >
     <template v-slot:top>
       <v-toolbar flat>
-        <v-toolbar-title>PEDIDOS DE CLIENTES</v-toolbar-title>
+        <v-toolbar-title >PEDIDOS DE CLIENTES</v-toolbar-title>
         <v-divider class="mx-5" inset vertical></v-divider>
         <v-spacer></v-spacer>
-        <v-dialog v-model="dialog" max-width="400">
-          <v-card>
-            <v-card-title class="text-h6" color="green">
-              Pedido cancelado com sucesso.
-            </v-card-title>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-
-              <v-btn color="green darken-1" text @click="dialog = false">
-                Fechar
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
+         <msgBrocados :msg="msg" v-show="msg"/>
       </v-toolbar>
     </template>
     <template v-slot:[`item.actions`]="{ item }">
       <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn color="green" dark v-bind="attrs" v-on="on">
-            status  
-          </v-btn>
+          <v-btn color="primary" dark v-bind="attrs" v-on="on"> status </v-btn>
         </template>
         <v-list>
-          <v-list-item v-for="(s, i) in status" :key="i" @click="atualizarStatus(item.id, s.tipo)">
+          <v-list-item
+            v-for="(s, i) in status"
+            :key="i"
+            @click="atualizarStatus(item.id, s.tipo)"
+          >
             <v-list-item-title>{{ s.tipo }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
-      <v-btn small @click="deletePedido(item.id), (dialog = true)" class=" ml-2">
+      <v-btn small @click="deletePedido(item.id, item.nome), (dialog = true)" class="ml-2">
         <v-icon color="red">delete</v-icon>
       </v-btn>
     </template>
@@ -49,8 +38,13 @@
 <script>
 import api from "@/api/api.js";
 
+import msgBrocados from '@/components/feedback/msgBrocados.vue'
+
 export default {
   name: "dashboardBrocados",
+  components:{
+    msgBrocados
+  },
   mixins: [api],
   data: () => ({
     dialog: false,
@@ -70,7 +64,7 @@ export default {
     ],
     desserts: [],
     status: [],
-   
+    msg: ""
   }),
 
   created() {
@@ -91,30 +85,28 @@ export default {
       });
     },
 
-    deletePedido(item) {
-      if(this.dialog == false){
-        this.delete(`/burgers/${item}`).then((resposta) => {
-        if (resposta.data) {
-          this.listarPedidos();
-        }
-      });
-
-      }
-
+    deletePedido(itemId, itemNome) {
+          this.delete(`/burgers/${itemId}`).then((resposta) => {
+          if (resposta.data) {
+            this.listarPedidos();
+            this.msg = `Pedido ${itemId}, em nome de ${itemNome} cancelado com sucesso!`
+            setTimeout(() => this.msg = "", 6000);
+          }
+        });
     },
 
-    atualizarStatus(itemId,statusTipo){
-       this.patch(`/burgers/${itemId}`, {statusTipo})
-      .then(() => {
-        this.listarPedidos()
-          console.log('Usuário atualizado com sucesso')
-      })
-      .catch((error) => {
+    atualizarStatus(itemId, statusTipo) {
+      this.patch(`/burgers/${itemId}`, { statusTipo })
+        .then(() => {
+          this.listarPedidos();
+           this.msg = `Status atualizado para : ${statusTipo}`
+            setTimeout(() => this.msg = "", 4000);
+          console.log("Status atualizado com sucesso");
+        })
+        .catch((error) => {
           console.log(error);
-      });
-  
-    }
-
+        });
+    },
   },
 };
 </script>

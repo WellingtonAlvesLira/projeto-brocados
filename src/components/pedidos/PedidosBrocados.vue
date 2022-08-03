@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <v-container fluid>
-      <v-row class="justify-center">
+    <v-container>
+      <v-row>
         <v-col cols="12" md="4" lg="12">
-          <h1>Gerenciar Pedidos</h1>
+          <h1 class="text-center">Gerenciar Pedidos</h1>
           <dashaboardBrocados/>
         </v-col>
       </v-row>
