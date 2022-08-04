@@ -11,24 +11,23 @@
         </v-card-title>
 
         <v-card-text>
-          <v-form ref="form" v-model="valid" lazy-validation>
+          <v-form
+            ref="form"
+            v-model="valid"
+            lazy-validation
+            @submit.prevent="registrar_user(e)"
+          >
             <v-text-field
-              v-model="email"
+              v-model="register_user.email"
               :rules="emailRules"
               label="E-mail"
               required
             ></v-text-field>
 
             <v-text-field
-              v-model="senha1"
+              v-model="register_user.senha"
               :rules="senhaRules"
               label="Senha"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-model="senha2"
-              :rules="senhaRules"
-              label="Repita a senha"
               required
             ></v-text-field>
 
@@ -36,7 +35,7 @@
               :disabled="!valid"
               color="success"
               class="mr-4"
-              @click="validate"
+              @click="registrar_user"
             >
               Cadastrar
             </v-btn>
@@ -55,27 +54,39 @@
 </template>
 
 <script>
+import api from "@/api/api.js";
+
 export default {
   name: "CadastrarBrocados",
-  components: {},
+  mixins: [api],
   data() {
     return {
+      register_user: {
+        email: "",
+        senha: "",
+      },
       dialog: false,
       valid: true,
-      email: "",
-      senha: "",
       emailRules: [
         (v) => !!v || "O e-mail é obrigatório",
         (v) => /.+@.+\..+/.test(v) || "E-mail deve ser Válido",
       ],
-      senhaRules: [
-        (v) => !!v || "Senha obrigatória",
-      ]
+      senhaRules: [(v) => !!v || "Senha obrigatória"],
     };
   },
   methods: {
-    validate() {
+    async registrar_user(e) {
       this.$refs.form.validate();
+      e.preventDefault();
+      this.post("/users/", this.register_user)
+        .then((resposta) => {
+          if (resposta.status == "201") {
+            console.log("Usuário criado com sucesso!");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };

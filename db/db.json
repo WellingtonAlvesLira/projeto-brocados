@@ -69,24 +69,17 @@
       "tipo": "Finalizado"
     }
   ],
-  "burgers": [
+  "burgers": [],
+  "users": [
     {
-      "nome": "Wellington",
-      "pao": "Italiano Branco",
-      "carne": "Maminha",
-      "status": "Solicitado",
-      "opcionais": "Chelddar",
-      "id": 1,
-      "statusTipo": "Em Produção"
+      "email": "",
+      "senha": "",
+      "id": 1
     },
     {
-      "nome": "Marlon",
-      "pao": "3 Queijos",
-      "carne": "Maminha",
-      "status": "Solicitado",
-      "opcionais": "Salame",
-      "id": 2,
-      "statusTipo": "Em Produção"
+      "email": "",
+      "senha": "",
+      "id": 2
     }
   ]
 }

@@ -1,13 +1,14 @@
 <!--Template é uma tag essencial, ela representa um novo component-->
 <template>
+<v-app>
   <v-container class="fluid mt-5">
     <v-row class="justify-center">
 
       <msgBrocados :msg="msg" :numberPedido="numberPedido" v-show="msg"/>
-   
+      <v-toolbar-title class="h2 text-center">Monte o seu Burger:</v-toolbar-title>
       <v-col col="12" md="4" lg="8" class="text-center">
         <template>
-          <v-form @submit="fazer_pedido">
+          <v-form @submit.prevent="fazer_pedido(e)">
             <v-text-field
               v-model="burger_pedido.nome"
               label="Digite o seu nome"
@@ -54,6 +55,7 @@
       </v-col></v-row
     ></v-container
   >
+  </v-app>
 </template>
 
 <script>
@@ -62,7 +64,7 @@ import api from "@/api/api.js";
 import msgBrocados from '@/components/feedback/msgBrocados.vue'
 
 export default {
-  name: "FormBrocados",
+  name: "CriarBurger",
   components:{
     msgBrocados,
   },
@@ -87,7 +89,8 @@ export default {
   }),
 
   methods: {
-    fazer_pedido() {
+    fazer_pedido(e) {
+      e.preventDefault()
       //Validação de dados
       if (this.burger_pedido.nome == "") {
         alert("O seu nome é obrigatório. Preencha!");
