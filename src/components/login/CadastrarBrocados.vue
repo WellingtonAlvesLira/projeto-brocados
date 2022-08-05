@@ -39,6 +39,8 @@
             >
               Cadastrar
             </v-btn>
+            <v-btn color="error" class="mr-4" @click="reset"> Limpar </v-btn>
+            <MsgBrocados :msg="msg" v-show="msg" class="mt-4" />
           </v-form>
         </v-card-text>
 
@@ -55,9 +57,11 @@
 
 <script>
 import api from "@/api/api.js";
+import MsgBrocados from "../feedback/msgBrocados.vue";
 
 export default {
   name: "CadastrarBrocados",
+  components: { MsgBrocados },
   mixins: [api],
   data() {
     return {
@@ -65,6 +69,8 @@ export default {
         email: "",
         senha: "",
       },
+      users: [],
+      msg: "",
       dialog: false,
       valid: true,
       emailRules: [
@@ -74,19 +80,47 @@ export default {
       senhaRules: [(v) => !!v || "Senha obrigatória"],
     };
   },
+
+  created() {
+    this.list_users();
+  },
   methods: {
-    async registrar_user(e) {
-      this.$refs.form.validate();
-      e.preventDefault();
-      this.post("/users/", this.register_user)
-        .then((resposta) => {
-          if (resposta.status == "201") {
-            console.log("Usuário criado com sucesso!");
+  registrar_user(e) {
+    let existeEmail = false;
+
+    if (this.$refs.form.validate()){
+      this.users.forEach(users => {        
+        if (users.email == this.register_user.email){
+            existeEmail = true;
+        }
+      });
+      if (existeEmail == true) {
+        alert('existe email')
+      }
+       
+      else if(existeEmail == false){
+          this.post("/users/", this.register_user).then((resposta) => {
+          if (resposta.data) {
+            this.msg = "Cadastrado realizado com sucesso";
+            setTimeout(() => this.msg = "", 4000);
+            setTimeout(() => this.default = false, 6000);
+
           }
-        })
-        .catch((error) => {
-          console.log(error);
         });
+      }
+    } else {
+      alert('preencha os campos!!')
+    }
+  },
+
+    reset() {
+      this.$refs.form.reset();
+    },
+
+    list_users() {
+      this.get("/users/").then((resposta) => {
+        this.users = resposta.data;
+      });
     },
   },
 };

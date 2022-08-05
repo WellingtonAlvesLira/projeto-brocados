@@ -72,14 +72,50 @@
   "burgers": [],
   "users": [
     {
-      "email": "",
-      "senha": "",
+      "email": "teste@hotmail.com",
+      "senha": "123456",
       "id": 1
     },
     {
-      "email": "",
-      "senha": "",
+      "email": "teste@hotmail.com",
+      "senha": "4646464",
       "id": 2
+    },
+    {
+      "email": "wellington@hotmail.com",
+      "senha": "546464",
+      "id": 3
+    },
+    {
+      "email": "marlon@hotmail.com",
+      "senha": "sadjskdjksd",
+      "id": 4
+    },
+    {
+      "email": "nicolas@hotmail.com",
+      "senha": "asksjkahshas",
+      "id": 5
+    },
+    {
+      "email": "netinha@hotmail.com",
+      "senha": "545454",
+      "id": 6
+    },
+    {
+      "email": "marlon255@hotmail.com",
+      "senha": "5454545",
+      "id": 7
+    },
+    {
+      "email": "marlon255@hotmail.com",
+      "senha": "5454545",
+      "id": 8
+    },
+    {
+      "email": "marlon255@hotmail.com",
+      "senha": "6154544",
+      "id": 9
     }
-  ]
+  ],
+  "login": []
 }

@@ -59,23 +59,11 @@ export default {
     };
   },
 
+ 
   methods: {
-  async logar_user(e) {
+    async logar_user(e) {
       this.$refs.form.validate();
-      e.preventDefault()
-      this.post("/login/", this.logar)
-        .then((resposta) => {
-          console.log(resposta.data);
-          this.dialog = false
-        const token = resposta.token;
-        const user = resposta.user;
-        this.$store.dispatch('login', { token, user });
-        this.$router.push("/criar-burger");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      
+      e.preventDefault();
     },
     reset() {
       this.$refs.form.reset();

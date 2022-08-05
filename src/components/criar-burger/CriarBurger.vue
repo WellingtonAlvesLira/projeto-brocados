@@ -88,6 +88,9 @@ export default {
 
   }),
 
+
+
+
   methods: {
     fazer_pedido(e) {
       e.preventDefault()
@@ -112,6 +115,7 @@ export default {
   created() {
     //Listando dados do backend para a aplicação
     this.get("/ingredientes").then((resposta) => {
+      if(resposta[0].toString() == "200")
       this.paes = resposta.data.paes;
       this.carnes = resposta.data.carnes;
       this.opcionaisdata = resposta.data.opcionais;

@@ -8,10 +8,6 @@ import LoginBrocados from '@/components/login/LoginBrocadosPage.vue';
 import CriarBurger from '@/components/criar-burger/CriarBurger.vue';
 
 
-
-
-
-
 Vue.use(Router);
 
 const routes = [

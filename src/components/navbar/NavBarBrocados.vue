@@ -14,8 +14,6 @@
       <template v-slot:extension>
         <v-tabs align-with-title>
           <v-tab @click="page_pedido()">PEDIDOS</v-tab>
-
-          <v-tab @click="sair_page()">SAIR</v-tab>
         </v-tabs>
       </template>
     </v-app-bar>
@@ -29,23 +27,16 @@
 export default {
   name: "NavBarBrocados",
   methods: {
+    data() {
+      return {
+        username: "",
+      };
+    },
     page_pedido() {
       this.$router.push("/pedidos-brocados");
     },
-
-    sair_page() {
-      this.$store.dispatch("logout");
-      this.$router.push("/");
-    },
   },
 
-  async created() {
-    //protegendo rotas de invasores.
-    if (!this.$store.getters.isLoggedIn) {
-      this.$router.push("/");
-    }
-    this.username = this.$store.getters.getUser.username;
-  },
 };
 </script>
 
