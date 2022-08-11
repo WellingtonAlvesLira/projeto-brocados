@@ -13,7 +13,9 @@
 
       <template v-slot:extension>
         <v-tabs align-with-title>
+          <v-tab @click="page_home()">HOME</v-tab>
           <v-tab @click="page_pedido()">PEDIDOS</v-tab>
+          <v-tab @click="page_criar_burger()">CRIAR BURGER</v-tab>
         </v-tabs>
       </template>
     </v-app-bar>
@@ -32,11 +34,17 @@ export default {
         username: "",
       };
     },
+    page_home(){
+      this.$router.push("/")
+    },
     page_pedido() {
       this.$router.push("/pedidos-brocados");
     },
-  },
 
+    page_criar_burger() {
+      this.$router.push("/criar-burger");
+    },
+  },
 };
 </script>
 

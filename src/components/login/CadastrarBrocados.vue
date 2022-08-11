@@ -122,6 +122,10 @@ export default {
         this.users = resposta.data;
       });
     },
+
+    showMsg(){
+       
+    }
   },
 };
 </script>
